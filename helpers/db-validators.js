@@ -3,7 +3,10 @@ const Usuario = require('../models/usuario');
 
 // If it's empty, set default value
 const esRolValido = async(rol = '') => {
+
     const existeRol = await Role.findOne({ rol });
+    // console.log(existeRol);
+
     if (!existeRol) {
         throw new Error(`El rol ${rol} no está registrado en la BD`);
     }

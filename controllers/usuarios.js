@@ -69,9 +69,17 @@ const usuariosPatch = (req, res = response) => {
     });
 };
 
-const usuariosDelete = (req, res = response) => {
+const usuariosDelete = async(req, res = response) => {
+
+    const { id } = req.params;
+
+    // Delete permanentely
+    // const usuario = await Usuario.findByIdAndDelete(id);
+
+    const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+
     res.json({
-        msg: "delete Api - controlador",
+        usuario
     });
 };
 

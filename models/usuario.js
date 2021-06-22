@@ -45,7 +45,11 @@ const UsuarioSchema = Schema({
 });
 
 UsuarioSchema.methods.toJSON = function() {
-    const { __v, password, ...usuario } = this.toObject();
+    // extract the params that I want to exclude and send the rest on the final argument
+    const { __v, password, _id, ...usuario } = this.toObject();
+
+    // Change the name of a parameter that is gonna show on the response 
+    usuario.uid = _id;
     return usuario;
 }
 

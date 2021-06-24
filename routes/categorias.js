@@ -25,7 +25,7 @@ router.get(
     "/:id", [
         check("id", "No es un id de MongoDB válido").isMongoId(),
         check("id").custom(existeCategoria),
-        validarCampos,
+        validarCampos
     ],
     obtenerCategoria
 );
@@ -35,7 +35,7 @@ router.post(
     "/", [
         validarJWT,
         check("nombre", "El nombre es obligatorio").not().isEmpty(),
-        validarCampos,
+        validarCampos
     ],
     crearCategoria
 );
@@ -46,7 +46,7 @@ router.put(
         validarJWT,
         check("nombre", "El nombre es obligatorio").not().isEmpty(),
         check("id").custom(existeCategoria),
-        validarCampos,
+        validarCampos
     ],
     actualizarCategoria
 );
@@ -58,7 +58,7 @@ router.delete(
         esAdminRole,
         check("id", "No es un id de MongoDB válido").isMongoId(),
         check("id").custom(existeCategoria),
-        validarCampos,
+        validarCampos
     ],
     borrarCategoria
 );

@@ -34,4 +34,4 @@ ProductoSchema.methods.toJSON = function() {
     return data;
 };
 
-module.exports = model("Categoria", ProductoSchema);
+module.exports = model("Producto", ProductoSchema);

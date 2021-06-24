@@ -51,6 +51,6 @@ UsuarioSchema.methods.toJSON = function() {
     // Change the name of a parameter that is gonna show on the response 
     usuario.uid = _id;
     return usuario;
-}
+};
 
 module.exports = model('Usuarios', UsuarioSchema);

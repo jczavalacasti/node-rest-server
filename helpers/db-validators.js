@@ -1,5 +1,6 @@
-const Role = require('../models/role');
-const Usuario = require('../models/usuario');
+// const Role = require('../models/role');
+// const Usuario = require('../models/usuario');
+const { Categoria, Role, Usuario } = require('../models');
 
 // If it's empty, set default value
 const esRolValido = async(rol = '') => {
@@ -19,6 +20,10 @@ const esEmailValido = async(correo = '') => {
     }
 };
 
+
+/**
+ * Validate if user exists on DB
+ */
 const existeUsuarioPorId = async(id) => {
     const existeUsuario = await Usuario.findById(id);
     if (!existeUsuario) {
@@ -26,8 +31,20 @@ const existeUsuarioPorId = async(id) => {
     }
 };
 
+
+/**
+ * Validate if category exists on DB
+ */
+const existeCategoria = async(id) => {
+    const existeCategoria = await Categoria.findById(id);
+    if (!existeCategoria) {
+        throw new Error(`La categoria con Id ${id} no existe`);
+    }
+};
+
 module.exports = {
     esRolValido,
     esEmailValido,
-    existeUsuarioPorId
+    existeUsuarioPorId,
+    existeCategoria
 };

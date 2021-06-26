@@ -47,18 +47,19 @@ class Server {
         // Fileupload
         this.app.use(fileupload({
             useTempFiles: true,
-            tempFileDir: '/tmp/'
+            tempFileDir: '/tmp/',
+            createParentPath: true // let create folders
         }));
 
     }
 
     routes() {
-        this.app.use(this.paths.auth, require('../routes/auth'));
-        this.app.use(this.paths.buscar, require('../routes/buscar'));
-        this.app.use(this.paths.categorias, require('../routes/categorias'));
-        this.app.use(this.paths.productos, require('../routes/productos'));
-        this.app.use(this.paths.usuarios, require('../routes/usuarios'));
-        this.app.use(this.paths.uploads, require('../routes/uploads'));
+        this.app.use(this.paths.auth, require('../routes/auth.routes'));
+        this.app.use(this.paths.buscar, require('../routes/buscar.routes'));
+        this.app.use(this.paths.categorias, require('../routes/categorias.routes'));
+        this.app.use(this.paths.productos, require('../routes/productos.routes'));
+        this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
+        this.app.use(this.paths.uploads, require('../routes/uploads.routes'));
     }
 
 

@@ -1,14 +1,14 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 
-const { validarCampos, validarJWT, esAdminRole } = require("../middlewares/");
+const { validarCampos, validarJWT, esAdminRole } = require("../middlewares");
 const {
     crearCategoria,
     obtenerCategorias,
     obtenerCategoria,
     actualizarCategoria,
     borrarCategoria,
-} = require("../controllers/categorias");
+} = require("../controllers/categorias.controller");
 
 const { existeCategoria } = require("../helpers/db-validators");
 

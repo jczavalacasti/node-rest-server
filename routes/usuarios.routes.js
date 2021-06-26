@@ -22,7 +22,7 @@ const {
     usuariosPut,
     usuariosPost,
     usuariosDelete,
-} = require("../controllers/usuarios");
+} = require("../controllers/usuarios.controller");
 
 const router = Router();
 

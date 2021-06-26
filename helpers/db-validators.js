@@ -3,7 +3,7 @@ const {
     Role,
     Usuario,
     Producto
-} = require("../models");
+} = require("../models/index.model");
 
 // If it's empty, set default value
 const esRolValido = async(rol = "") => {
@@ -52,10 +52,24 @@ const existeProductoPorId = async(id) => {
     }
 };
 
+/**
+ * Validate colections allowed
+ */
+const coleccionesPermitidas = (coleccion = '', colecciones = []) => {
+    const incluida = colecciones.includes(coleccion);
+    if (!incluida) {
+        throw new Error(`La colección ${ coleccion} no es permitida, ${ colecciones}`);
+    }
+
+    return true;
+};
+
+
 module.exports = {
     esRolValido,
     esEmailValido,
     existeUsuarioPorId,
     existeCategoriaPorId,
-    existeProductoPorId
+    existeProductoPorId,
+    coleccionesPermitidas
 };

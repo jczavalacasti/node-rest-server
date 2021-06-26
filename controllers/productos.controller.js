@@ -1,5 +1,5 @@
 const { response } = require("express");
-const { Producto } = require("../models");
+const { Producto } = require("../models/index.model");
 
 // GetProducts - paginado - total - populate
 const obtenerProductos = async(req, res = response) => {
@@ -27,12 +27,12 @@ const obtenerProducto = async(req, res = response) => {
     const producto = await Producto.findById(id)
         .populate("usuario", "nombre")
         .populate("categoria", "nombre");
-        
-        if(!producto.estado){
-            return res.status(400).json({
-                msg : "Producto no disponible"
-            });
-        }
+
+    if (!producto.estado) {
+        return res.status(400).json({
+            msg: "Producto no disponible"
+        });
+    }
 
     res.json({
         producto
